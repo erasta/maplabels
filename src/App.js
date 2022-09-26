@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { MapContainer, TileLayer, useMap } from 'react-leaflet';
+import useLocalStorage from 'use-local-storage';
 import { TipLabel } from './TipLabel.js';
 
 const LocateClicks = ({ createLabel }) => {
@@ -12,7 +13,7 @@ const LocateClicks = ({ createLabel }) => {
 }
 
 const App = () => {
-  const [labels, setLabels] = useState([]);
+  const [labels, setLabels] = useLocalStorage("labels", []);
   return (
     <MapContainer
       center={[32.1, 34.8]}
