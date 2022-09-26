@@ -11,3 +11,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.titleText {
+  position: absolute;
+  top: 10px;
+  z-index: 9999;
+  width: 200px;
+  height: auto;
+  background: hsla(0,100%,100%,0.8);
+  margin: 10px;
+  font-family: sans-serif;
+  font-size: 13px;
+  padding: 10px;
+  padding-top: 5px;
+  border-radius: 5px;
+}
+.titleText hr {
+  border: 1px solid #000;
+  margin: 5px;
+}
