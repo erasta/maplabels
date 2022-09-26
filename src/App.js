@@ -14,9 +14,10 @@ const LocateClicks = ({ createLabel }) => {
 
 const App = () => {
   const [labels, setLabels] = useLocalStorage("labels", []);
+  const firstCenter = labels && labels.length ? labels[0].latlng : [32.1, 34.8];
   return (
     <MapContainer
-      center={[32.1, 34.8]}
+      center={firstCenter}
       zoom={14}
       style={{ height: '100vh' }}
       key={'map'}
