@@ -1,24 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import { MapContainer, TileLayer, useMap } from 'react-leaflet';
+import { TipLabel } from './TipLabel.js';
 
-function App() {
+const LocateClicks = ({ createLabel }) => {
+  const map = useMap();
+  map.off('click');
+  map.on('click', function (e) {
+    createLabel(e.latlng);
+  });
+  return null
+}
+
+const App = () => {
+  const [labels, setLabels] = useState([]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MapContainer
+      center={[32.1, 34.8]}
+      zoom={14}
+      scrollWheelZoom={false}
+      style={{ height: '100vh' }}
+      key={1}
+    >
+      <LocateClicks
+        createLabel={(latlng) => {
+          const newLabels = labels.map(l => {
+            const {latlng, text} = l;
+            return {latlng, text};
+          });
+          newLabels.push({ latlng, text: 'Label ' + labels.length, first: true });
+          setLabels(newLabels);
+        }}
+      >
+      </LocateClicks>
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+
+      {labels.map((lb, i) =>
+        <TipLabel key={i} currLabel={lb} labels={labels} setLabels={setLabels}></TipLabel>
+      )}
+    </MapContainer>
   );
 }
 
