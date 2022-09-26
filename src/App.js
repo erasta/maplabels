@@ -18,9 +18,8 @@ const App = () => {
     <MapContainer
       center={[32.1, 34.8]}
       zoom={14}
-      scrollWheelZoom={false}
       style={{ height: '100vh' }}
-      key={1}
+      key={'map'}
     >
       <LocateClicks
         createLabel={(latlng) => {
