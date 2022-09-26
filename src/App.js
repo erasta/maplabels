@@ -1,7 +1,7 @@
-import { useState } from 'react';
 import { MapContainer, TileLayer, useMap } from 'react-leaflet';
 import useLocalStorage from 'use-local-storage';
 import { TipLabel } from './TipLabel.js';
+import 'leaflet/dist/leaflet.css';
 
 const LocateClicks = ({ createLabel }) => {
   const map = useMap();
