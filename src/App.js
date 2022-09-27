@@ -2,6 +2,7 @@ import { MapContainer, TileLayer, useMap, ZoomControl } from 'react-leaflet';
 import useLocalStorage from 'use-local-storage';
 import { TipLabel } from './TipLabel.js';
 import 'leaflet/dist/leaflet.css';
+import { ForkMe } from './ForkMe.js';
 
 const LocateClicks = ({ createLabel }) => {
   const map = useMap();
@@ -50,6 +51,7 @@ const App = () => {
           <TipLabel key={i} currLabel={lb} labels={labels} setLabels={setLabels}></TipLabel>
         )}
       </MapContainer>
+      <ForkMe></ForkMe>
     </div>
   );
 }
