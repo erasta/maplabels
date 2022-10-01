@@ -2,4 +2,4 @@
 
 Click the map to add labels
 
-<img src="ScreenShot.png" width="500"/>
+<img src="images/ScreenShot.jpeg" width="500"/>
